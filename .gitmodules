@@ -1,0 +1,6 @@
+[submodule ".emacs.lisp/scala-mode2"]
+	path = .emacs.lisp/scala-mode2
+	url = https://github.com/hvesalai/scala-mode2
+[submodule ".emacs.lisp/sbt-mode"]
+	path = .emacs.lisp/sbt-mode
+	url = https://github.com/hvesalai/sbt-mode
