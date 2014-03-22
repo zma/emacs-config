@@ -65,7 +65,7 @@
 ;; Replace tab with spaces
 (setq-default indent-tabs-mode nil)
 
-;; Set tab width
+;; Set default tab width
 (setq-default tab-width 4)
 
 ;; Auto save mode
@@ -74,7 +74,6 @@
 ;; Set backup functions
 (setq
   backup-by-copying t ; auto backup
-;;  backup-directory-alist '(("~/.emacs.d/bak")) ; store backup files in "~/.emacs.d/bak"
   backup-directory-alist '(("."."~/.emacs.d/bak")) ; store backup files in "~/.emacs.d/bak"
   version-control t ; backup version control
   delete-old-versions t ; automatically delete old backup files
