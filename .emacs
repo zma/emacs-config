@@ -88,8 +88,8 @@
 ;; keys
 (global-set-key "\C-c\C-x" 'kill-whole-line)
 
-;; auto indent: http://www.emacswiki.org/emacs/AutoIndentation
-(define-key global-map (kbd "RET") 'newline-and-indent)
+;; automatically start server
+(server-start)
 
 ;; ===================end common config=============
 
@@ -191,13 +191,17 @@
 (require 'sbt-mode)
 
 ;; Load the ensime lisp code...
-(add-to-list 'load-path "ENSIME_ROOT/elisp/")
+;; (add-to-list 'load-path "ENSIME_ROOT/elisp/")
 (require 'ensime)
 
 ;; This step causes the ensime-mode to be started whenever
 ;; scala-mode is started for a buffer. You may have to customize this step
 ;; if you're not using the standard scala mode.
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;; auto indent: http://www.emacswiki.org/emacs/AutoIndentation
+(add-hook 'scala-mode-hook '(lambda ()
+                              (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;; ==================end scala===============
 
