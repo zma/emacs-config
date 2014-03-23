@@ -25,11 +25,11 @@
 ;; No beep warning
 (setq visible-bell t)
 
-;; set foreground color to white
+;; set foreground color
 ;;(set-foreground-color "white")
 
-;; set background color to black
-;;(set-background-color "gray14")
+;; set background color
+(set-background-color "gray14")
 
 ;; No scroll bar
 ;; (scroll-bar-mode nil)
