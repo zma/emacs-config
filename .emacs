@@ -88,7 +88,7 @@
 (global-set-key "\C-c\C-x" 'kill-whole-line)
 
 ;; automatically start server
-(server-start)
+;; (server-start)
 
 ;; ===================end common config=============
 
