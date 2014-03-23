@@ -21,9 +21,6 @@
 ;; use the new deftheme support from Emacs 24
 (load-theme 'misterioso t)
 
-;; (add-to-list 'custom-theme-load-path "~/.emacs.lisp/solarized-emacs/")
-(add-to-list 'custom-theme-load-path "~/.emacs.lisp/emacs-color-theme-solarized/")
-
 ;; font size
 (set-face-attribute 'default nil :height 120)
 
