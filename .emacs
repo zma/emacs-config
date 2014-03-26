@@ -215,3 +215,10 @@
                               (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;; ==================end scala===============
+
+;; ==================latex===================
+(require 'reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+
+;; ==================end latex===================
