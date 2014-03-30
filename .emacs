@@ -43,7 +43,7 @@
 ;; (tool-bar-mode -1)
 
 ;; No menu bar
-;; (menu-bar-mode -1)
+(menu-bar-mode -1)
 
 ;; Set the frame size
 ;; (defun set-frame-size()
