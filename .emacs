@@ -22,7 +22,7 @@
 (load-theme 'misterioso t)
 
 ;; font size
-(set-face-attribute 'default nil :height 120)
+;; (set-face-attribute 'default nil :height 120)
 
 ;; No start up message
 (setq inhibit-startup-message t)
@@ -43,25 +43,30 @@
 ;; (tool-bar-mode -1)
 
 ;; No menu bar
-(menu-bar-mode -1)
+;; (menu-bar-mode -1)
 
 ;; Set the frame size
-(defun set-frame-size()
-  (interactive)
-  (if window-system
-  (progn
-     (setq initial-frame-alist '((width . 140) (height . 42))))))
+;; (defun set-frame-size()
+;;   (interactive)
+;;   (if window-system
+;;   (progn
+;;      (setq initial-frame-alist '((width . 140) (height . 42))))))
+;; 
+;; (set-frame-size)
 
-(set-frame-size)
-
-;; Display line and column number
+;; Display line and column number at the status bar
 (setq column-number-mode t)
 (setq line-number-mode t)
 
-;; Display line number
+;; Display line number on the left of the content
+;; http://www.logic.at/prolog/linum/linum.html
+(require 'linum)
 (global-linum-mode t)
+;; use customized linum-format: add a addition space after the line number
+(setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
 
 ;; Display the paren
+;; see matching pairs of parentheses and other characters
 (show-paren-mode t)
 
 ;; Only file name in the title bar
