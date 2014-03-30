@@ -1,5 +1,13 @@
 ;; Emacs Configuration
 ;; Eric Zhiqiang Ma, http://www.ericzma.com
+;; Check more tips at:
+;; http://www.fclose.com/4249/emacs-tips-and-howtos/
+;; and
+;; http://ask.fclose.com/tag/emacs
+
+;; Modes not tracked by git here and you may need to 
+;; install them manually:
+;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
 
 ;; ===============common config==================
 
