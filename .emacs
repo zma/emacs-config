@@ -24,7 +24,8 @@
 ;; (color-theme-gray30)
 
 ;; use the new deftheme support from Emacs 24
-(load-theme 'misterioso t)
+(if (>= emacs-major-version 24)
+    (load-theme 'misterioso t))
 
 ;; font size
 ;; (set-face-attribute 'default nil :height 120)
