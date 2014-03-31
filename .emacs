@@ -148,7 +148,8 @@
   ;; Key define - compile
   (define-key c-mode-base-map [(f7)] 'compile)
   ;; Enter act same as C-j
-  (define-key c-mode-map [return] 'newline-and-indent)
+  ;; (define-key c-mode-map [return] 'newline-and-indent)
+  (local-set-key (kbd "RET") 'newline-and-indent)
   ;; Code auto completion
   (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
@@ -165,7 +166,8 @@
   (imenu-add-menubar-index)
   (which-function-mode)
   (define-key c-mode-base-map [(f7)] 'compile)
-  (define-key c++-mode-map [return] 'newline-and-indent)
+  ;; (define-key c++-mode-map [return] 'newline-and-indent)
+  (local-set-key (kbd "RET") 'newline-and-indent)
   (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
 )
@@ -237,3 +239,4 @@
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
 ;; ==================end latex===================
+
