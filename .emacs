@@ -5,9 +5,6 @@
 ;; and
 ;; http://ask.fclose.com/tag/emacs
 
-;; Modes not tracked by git here and you may need to 
-;; install them manually:
-;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
 
 ;; ===============common config==================
 
@@ -114,6 +111,11 @@
   (interactive)
   (save-some-buffers)
   (kill-emacs))
+
+;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.lisp/auto-complete-mode/ac-dict")
+(ac-config-default)
 
 ;; ===================end common config=============
 
