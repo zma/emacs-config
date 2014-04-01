@@ -76,7 +76,11 @@
 (show-paren-mode t)
 
 ;; Only file name in the title bar
-(setq frame-title-format (concat "%b"))
+(setq frame-title-format "%b (%f)")
+
+;; buffer name with the path
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
 
 ;; Replace tab with spaces
 (setq-default indent-tabs-mode nil)
@@ -148,7 +152,7 @@
 ;; =================== etags =====================
 (defvar tags-cmd "etags -R ./* 2>/dev/null")
 
-(defun regen-tags ()
+(defun tags-regen ()
   "Regenerate the tags file for the current working directory"
   (interactive)
   (let ((tag-file (concat default-directory "TAGS")))
