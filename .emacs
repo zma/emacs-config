@@ -108,6 +108,10 @@
 ;; kill whole line
 (global-set-key "\C-c\C-x" 'kill-whole-line)
 
+;; evil mode
+(require 'evil)
+(evil-mode 1)
+
 ;; copy whole line
 (defun copy-line (arg)
   "Copy lines (as many as prefix argument) in the kill ring.
