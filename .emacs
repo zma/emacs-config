@@ -149,8 +149,8 @@
 
 ;; ===================end common config=============
 
-;; =================== etags =====================
-(defvar tags-cmd "etags -R ./* 2>/dev/null")
+;; =================== tags =====================
+(defvar tags-cmd "ctags -e -R ./* 2>/dev/null")
 
 (defun tags-regen ()
   "Regenerate the tags file for the current working directory"
