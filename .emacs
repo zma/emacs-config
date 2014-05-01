@@ -88,6 +88,11 @@
 ;; Set default tab width
 (setq-default tab-width 4)
 
+;; display whitespace
+(require 'whitespace)
+(setq-default
+  show-trailing-whitespace t)
+
 ;; Auto save mode
 (setq auto-save-mode nil)
 
@@ -107,10 +112,6 @@
 ;; keys
 ;; kill whole line
 (global-set-key "\C-c\C-x" 'kill-whole-line)
-
-;; evil mode
-(require 'evil)
-(evil-mode 1)
 
 ;; copy whole line
 (defun copy-line (arg)
@@ -135,6 +136,11 @@
   (if (and arg (not (= 1 arg))) (message "%d lines copied" arg)))
 
 (global-set-key "\C-c\C-k" 'copy-line)
+
+;; evil mode
+(setq evil-want-C-u-scroll t)
+(require 'evil)
+(evil-mode 1)
 
 ;; automatically start server
 ;; (server-start)
