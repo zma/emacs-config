@@ -5,9 +5,6 @@
 ;; and
 ;; http://ask.fclose.com/tag/emacs
 
-
-;; ===============common config==================
-
 ;; load path
 (add-to-list 'load-path "~/.emacs.lisp/")
 
@@ -15,84 +12,23 @@
 (let ((default-directory "~/.emacs.lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; interface
-;; http://www.emacswiki.org/emacs/ColorTheme
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (color-theme-robin-hood)
-;; (color-theme-charcoal-black)
-;; (color-theme-gray30)
+;; ================= common config =============
+;; Set default major mode to text-mode
+(setq default-major-mode 'text-mode)
 
-;; use the new deftheme support from Emacs 24
-(if (>= emacs-major-version 24)
-    (load-theme 'misterioso t))
+;; automatically start server
+;; (server-start)
 
-;; font size
-;; (set-face-attribute 'default nil :height 120)
+;; define function to shutdown emacs server instance
+(defun server-shutdown ()
+  "Save buffers, Quit, and Shutdown (kill) server"
+  (interactive)
+  (save-some-buffers)
+  (kill-emacs))
 
-;; No start up message
-(setq inhibit-startup-message t)
+;; ================= end common config =============
 
-;; No beep warning
-(setq visible-bell t)
-
-;; set foreground color
-;;(set-foreground-color "white")
-
-;; set background color
-;;(set-background-color "gray14")
-
-;; No scroll bar
-;; (scroll-bar-mode nil)
-
-;; No tool bar
-;; (tool-bar-mode -1)
-
-;; No menu bar
-(menu-bar-mode -1)
-
-;; Set the frame size
-;; (defun set-frame-size()
-;;   (interactive)
-;;   (if window-system
-;;   (progn
-;;      (setq initial-frame-alist '((width . 140) (height . 42))))))
-;; 
-;; (set-frame-size)
-
-;; Display line and column number at the status bar
-(setq column-number-mode t)
-(setq line-number-mode t)
-
-;; Display line number on the left of the content
-;; http://www.logic.at/prolog/linum/linum.html
-(require 'linum)
-(global-linum-mode t)
-;; use customized linum-format: add a addition space after the line number
-(setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
-
-;; Display the paren
-;; see matching pairs of parentheses and other characters
-(show-paren-mode t)
-
-;; Only file name in the title bar
-(setq frame-title-format "%b (%f)")
-
-;; buffer name with the path
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse)
-
-;; Replace tab with spaces
-(setq-default indent-tabs-mode nil)
-
-;; Set default tab width
-(setq-default tab-width 4)
-
-;; display whitespace
-(require 'whitespace)
-(setq-default
-  show-trailing-whitespace t)
-
+;; =============== auto-actions ==================
 ;; Auto save mode
 (setq auto-save-mode nil)
 
@@ -106,9 +42,97 @@
   kept-old-versions 2 ; keep the 2 oldest version of backup
 )
 
-;; Set default major mode to text-mode
-(setq default-major-mode 'text-mode)
+;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.lisp/auto-complete-mode/ac-dict")
+(ac-config-default)
 
+;; =============== end auto-actions ==================
+
+;; =============== interface ==================
+
+;; use the new deftheme support from Emacs 24
+(if (>= emacs-major-version 24)
+    (load-theme 'misterioso t))
+
+;; interface
+;; http://www.emacswiki.org/emacs/ColorTheme
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-robin-hood)
+;; (color-theme-charcoal-black)
+;; (color-theme-gray30)
+
+;; No start up message
+(setq inhibit-startup-message t)
+
+;; No beep warning
+(setq visible-bell t)
+
+;; font size
+;; (set-face-attribute 'default nil :height 120)
+
+;; set foreground color
+;;(set-foreground-color "white")
+
+;; set background color
+;;(set-background-color "gray14")
+
+;; No scroll bar
+;; (scroll-bar-mode nil)
+
+;; No tool bar
+;; (tool-bar-mode -1)
+
+;; Set the frame size
+;; (defun set-frame-size()
+;;   (interactive)
+;;   (if window-system
+;;   (progn
+;;      (setq initial-frame-alist '((width . 140) (height . 42))))))
+;;
+;; (set-frame-size)
+
+;; No menu bar
+(menu-bar-mode -1)
+
+;; Display line and column number at the status bar
+(setq column-number-mode t)
+(setq line-number-mode t)
+
+;; Only file name in the title bar
+(setq frame-title-format "%b (%f)")
+
+;; buffer name with the path
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+
+;; Display line number on the left of the content
+;; http://www.logic.at/prolog/linum/linum.html
+(require 'linum)
+(global-linum-mode t)
+;; use customized linum-format: add a addition space after the line number
+(setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+
+;; Display the paren
+;; see matching pairs of parentheses and other characters
+(show-paren-mode t)
+
+;; Replace tab with spaces
+(setq-default indent-tabs-mode nil)
+
+;; Set default tab width
+(setq-default tab-width 4)
+
+;; display whitespace
+(require 'whitespace)
+(setq-default
+  show-trailing-whitespace t)
+
+;; =============== end interface ==================
+
+
+;; =============== keys ==================
 ;; keys
 ;; kill whole line
 (global-set-key "\C-c\C-x" 'kill-whole-line)
@@ -142,22 +166,7 @@
 (require 'evil)
 (evil-mode 1)
 
-;; automatically start server
-;; (server-start)
-
-;; define function to shutdown emacs server instance
-(defun server-shutdown ()
-  "Save buffers, Quit, and Shutdown (kill) server"
-  (interactive)
-  (save-some-buffers)
-  (kill-emacs))
-
-;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.lisp/auto-complete-mode/ac-dict")
-(ac-config-default)
-
-;; ===================end common config=============
+;; =============== end keys ==================
 
 ;; =================== tags =====================
 (defvar tags-cmd "ctags -e -R ./* 2>/dev/null")
@@ -170,7 +179,7 @@
     (visit-tags-table tag-file)))
 ;; =================== end etags =====================
 
-;; ==================c/c++====================
+;; ================== c/c++ ====================
 (add-hook 'c-mode-hook 'linux-c-mode)
 
 (defun linux-c-mode()
@@ -223,15 +232,15 @@
 
 ;; hippie auto expand, use senator first
 (setq hippie-expand-try-functions-list
- 	  '(
-		senator-try-expand-semantic
-		try-expand-dabbrev
-		try-expand-dabbrev-visible
-		try-expand-dabbrev-all-buffers
-		try-expand-dabbrev-from-kill
-		try-expand-list
-		try-expand-list-all-buffers
-		try-expand-line
+      '(
+        senator-try-expand-semantic
+        try-expand-dabbrev
+        try-expand-dabbrev-visible
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-expand-list
+        try-expand-list-all-buffers
+        try-expand-line
         try-expand-line-all-buffers
         try-complete-file-name-partially
         try-complete-file-name
@@ -242,16 +251,16 @@
 ;; define the make command
 '(compile-command "make")
 
-;; ==================end c/c++================
+;; ================== end c/c++ ================
 
-;; ==================tuareg===================
+;; ================== ocaml ===================
 ;; tuareg-mode set
 (setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-;; ==================end tuareg===============
+;; ================== end ocaml ===============
 
-;; ==================scala===============
+;; ================== scala ===============
 ;; scala mode
 (require 'scala-mode2)
 
@@ -271,12 +280,11 @@
 (add-hook 'scala-mode-hook '(lambda ()
                               (local-set-key (kbd "RET") 'newline-and-indent)))
 
-;; ==================end scala===============
+;; ================== end scala ===============
 
-;; ==================latex===================
+;; ================== latex ===================
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
-;; ==================end latex===================
-
+;; ================== end latex ===================
