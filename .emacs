@@ -1,5 +1,6 @@
 ;; Emacs Configuration
 ;; Eric Zhiqiang Ma, http://www.ericzma.com
+
 ;; Check more tips at:
 ;; http://www.fclose.com/4249/emacs-tips-and-howtos/
 ;; and
@@ -46,6 +47,9 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.lisp/auto-complete-mode/ac-dict")
 (ac-config-default)
+
+;; automatically delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; =============== end auto-actions ==================
 
@@ -124,10 +128,8 @@
 ;; Set default tab width
 (setq-default tab-width 4)
 
-;; display whitespace
-(require 'whitespace)
-(setq-default
-  show-trailing-whitespace t)
+;; display trailing whitespace
+(setq-default show-trailing-whitespace t)
 
 ;; =============== end interface ==================
 
