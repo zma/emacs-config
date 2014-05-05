@@ -7,11 +7,11 @@
 ;; http://ask.fclose.com/tag/emacs
 
 ;; load path
-;; (add-to-list 'load-path "~/.emacs.lisp/")
+(add-to-list 'load-path "~/.emacs.lisp/")
 
 ;; recursively load subdirs in ~/.emacs.lisp/
-;; (let ((default-directory "~/.emacs.lisp/"))
-;;  (normal-top-level-add-subdirs-to-load-path))
+(let ((default-directory "~/.emacs.lisp/"))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;; Use Marmalade
 
@@ -31,9 +31,10 @@
      ;; (package-installed-p 'evil)
      (if (package-installed-p package)
          nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
-         package)))
+       ;; (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+       (package-install package)
+       ;;  package)
+       ))
    packages))
 
 ;; make sure to have downloaded archive description.
