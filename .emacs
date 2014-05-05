@@ -15,15 +15,17 @@
 
 ;; Use Marmalade
 
+(require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
-(require 'package)
+
+;; activate installed packages
 (package-initialize)
 
 (defun ensure-package-installed (&rest packages)
   "Assure every package is installed, ask for installation if it’s not.
-Return a list of installed packages or nil for every skipped package."
+  Return a list of installed packages or nil for every skipped package."
   (mapcar
    (lambda (package)
      ;; (package-installed-p 'evil)
@@ -41,12 +43,15 @@ Return a list of installed packages or nil for every skipped package."
 
 (ensure-package-installed
  'evil
+ 'auto-complete
+ 'linum
+ 'smex
+ 'reftex
+ 'scala-mode2
+ 'sbt-mode
  'ensime
- 'auto-complete-mode)
-;  --> (nil nil) if iedit and magit are already installed
-
-;; activate installed packages
-(package-initialize)
+)
+;  --> (nil ...) if packages are not already installed
 
 ;; ================= common config =============
 ;; Set default major mode to text-mode
@@ -80,7 +85,7 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.lisp/auto-complete-mode/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
 ;; automatically delete trailing whitespace
@@ -93,14 +98,6 @@ Return a list of installed packages or nil for every skipped package."
 ;; use the new deftheme support from Emacs 24
 (if (>= emacs-major-version 24)
     (load-theme 'misterioso t))
-
-;; interface
-;; http://www.emacswiki.org/emacs/ColorTheme
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (color-theme-robin-hood)
-;; (color-theme-charcoal-black)
-;; (color-theme-gray30)
 
 ;; No start up message
 (setq inhibit-startup-message t)
