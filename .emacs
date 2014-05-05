@@ -7,11 +7,46 @@
 ;; http://ask.fclose.com/tag/emacs
 
 ;; load path
-(add-to-list 'load-path "~/.emacs.lisp/")
+;; (add-to-list 'load-path "~/.emacs.lisp/")
 
 ;; recursively load subdirs in ~/.emacs.lisp/
-(let ((default-directory "~/.emacs.lisp/"))
-  (normal-top-level-add-subdirs-to-load-path))
+;; (let ((default-directory "~/.emacs.lisp/"))
+;;  (normal-top-level-add-subdirs-to-load-path))
+
+;; Use Marmalade
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(require 'package)
+(package-initialize)
+
+(defun ensure-package-installed (&rest packages)
+  "Assure every package is installed, ask for installation if it’s not.
+Return a list of installed packages or nil for every skipped package."
+  (mapcar
+   (lambda (package)
+     ;; (package-installed-p 'evil)
+     (if (package-installed-p package)
+         nil
+       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+           (package-install package)
+         package)))
+   packages))
+
+;; make sure to have downloaded archive description.
+;; Or use package-archive-contents as suggested by Nicolas Dudebout
+(or (file-exists-p package-user-dir)
+    (package-refresh-contents))
+
+(ensure-package-installed
+ 'evil
+ 'ensime
+ 'auto-complete-mode)
+;  --> (nil nil) if iedit and magit are already installed
+
+;; activate installed packages
+(package-initialize)
 
 ;; ================= common config =============
 ;; Set default major mode to text-mode
