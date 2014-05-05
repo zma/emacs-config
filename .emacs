@@ -42,17 +42,16 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
+;;  --> (nil ...) if packages are not already installed
 (ensure-package-installed
  'evil
  'auto-complete
- 'linum
  'smex
+ 'linum
  'reftex
  'scala-mode2
  'sbt-mode
- 'ensime
-)
-;  --> (nil ...) if packages are not already installed
+ 'ensime)
 
 ;; ================= common config =============
 ;; Set default major mode to text-mode
