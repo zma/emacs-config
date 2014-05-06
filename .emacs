@@ -45,9 +45,10 @@
 ;;  --> (nil ...) if packages are not already installed
 (ensure-package-installed
  'evil
+ 'linum
  'auto-complete
  'smex
- 'linum
+ 'flyspell
  'reftex
  'scala-mode2
  'sbt-mode
@@ -90,6 +91,11 @@
 
 ;; automatically delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; automatic spell checking
+(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+(autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
+(autoload 'tex-mode-flyspell-verify "flyspell" "" t)
 
 ;; =============== end auto-actions ==================
 
@@ -323,9 +329,19 @@
 
 ;; ================== end scala ===============
 
+;; ================== text ===================
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+;; ================== end text ===================
+
 ;; ================== latex ===================
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
+;; spell checking
+(add-hook 'LaTex-mode-hook (lambda () (flyspell-mode 1)))
+(add-hook 'latex-mode-hook (lambda () (flyspell-mode 1)))
 ;; ================== end latex ===================
