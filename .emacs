@@ -13,8 +13,7 @@
 (let ((default-directory "~/.emacs.lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; Use Marmalade
-
+;; package repos
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -42,7 +41,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-;;  --> (nil ...) if packages are not already installed
+
 (ensure-package-installed
  'evil
  'linum
@@ -52,7 +51,7 @@
  'reftex
  'scala-mode2
  'sbt-mode
- 'ensime)
+ 'ensime) ; --> (nil ...) if packages are not already installed
 
 ;; ================= common config =============
 ;; Set default major mode to text-mode
@@ -77,11 +76,12 @@
 ;; Set backup functions
 (setq
   backup-by-copying t ; auto backup
-  backup-directory-alist '(("."."~/.emacs.d/bak")) ; store backup files in "~/.emacs.d/bak"
+  backup-directory-alist '(("."."~/.emacs.d/bak")) ; backup files
+  ;; auto-save-file-name-transforms `((".*" ,temporary-file-directory t)) ; #files
   version-control t ; backup version control
   delete-old-versions t ; automatically delete old backup files
-  kept-new-versions 6 ; keep only 6 version of backup
-  kept-old-versions 2 ; keep the 2 oldest version of backup
+  kept-new-versions 8 ; keep 8 version of backup
+  kept-old-versions 4 ; keep the 4 oldest version of backup
 )
 
 ;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
