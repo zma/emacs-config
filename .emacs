@@ -76,8 +76,8 @@
 ;; Set backup functions
 (setq
   backup-by-copying t ; auto backup
-  backup-directory-alist '(("."."~/.emacs.d/bak")) ; backup files
-  ;; auto-save-file-name-transforms `((".*" ,temporary-file-directory t)) ; #files
+  backup-directory-alist '(("."."~/.emacs.d/backup")) ; backup files
+  auto-save-file-name-transforms `((".*" ,"~/.emacs.d/backup" t)) ; #files
   version-control t ; backup version control
   delete-old-versions t ; automatically delete old backup files
   kept-new-versions 8 ; keep 8 version of backup
