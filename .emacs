@@ -44,6 +44,7 @@
 
 (ensure-package-installed
  'evil
+ 'undo-tree
  'linum
  'auto-complete
  'smex
