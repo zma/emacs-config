@@ -170,6 +170,11 @@
 ;; display trailing whitespace
 (setq-default show-trailing-whitespace t)
 
+;; `lines-tail`, highlight the part that goes beyond the limit of `whitespace-line-column`
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
 ;; =============== end interface ==================
 
 
