@@ -17,8 +17,7 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-))
-;;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; activate installed packages
 (package-initialize)
@@ -235,6 +234,8 @@
 ;; =================== end etags =====================
 
 ;; ================== c/c++ ====================
+(add-to-list 'auto-mode-alist '("\\.c0\\'" . c-mode))
+
 (add-hook 'c-mode-hook 'linux-c-mode)
 
 (defun linux-c-mode()
