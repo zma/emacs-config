@@ -180,7 +180,6 @@
 
 
 ;; =============== keys ==================
-;; keys
 ;; kill whole line
 (global-set-key "\C-c\C-x" 'kill-whole-line)
 
@@ -208,11 +207,16 @@
 
 (global-set-key "\C-c\C-k" 'copy-line)
 
+;; make window larger or smaller
+(global-set-key (kbd "<C-up>") 'shrink-window)
+(global-set-key (kbd "<C-down>") 'enlarge-window)
+
 ;; evil mode
 (setq evil-want-C-u-scroll t)
 (require 'evil)
 (evil-mode 1)
 
+;; auto-completion when typing commands
 (require 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
