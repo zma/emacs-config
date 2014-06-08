@@ -336,6 +336,10 @@
 (add-hook 'scala-mode-hook '(lambda ()
                               (local-set-key (kbd "RET") 'newline-and-indent)))
 
+;; set evil-mode M-. to be handled by ensime
+(add-hook 'ensime-mode-hook '(lambda ()
+                               (define-key evil-normal-state-local-map "\M-\." 'ensime-edit-definition)))
+
 ;; ================== end scala ===============
 
 ;; ================== text ===================
