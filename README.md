@@ -5,9 +5,6 @@ My Emacs configurations.
 
 ##How to use these files##
 
-    cd /path/to/emacs-config/
-    git submodule update --init
-
 If you never configured Emacs:
 
     cd
@@ -19,4 +16,3 @@ If you ever configured your Emacs, you may need to merge my configurations to yo
 Enjoy.
 
 Eric Zhiqiang Ma ( http://www.ericzma.com )
-
