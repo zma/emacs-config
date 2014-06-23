@@ -46,6 +46,7 @@
  'evil
  'undo-tree
  'linum
+ 'saveplace
  'fill-column-indicator
  'auto-complete
  'smex
@@ -175,6 +176,11 @@
 ;; (require 'whitespace)
 ;; (setq whitespace-style '(face empty tabs lines-tail trailing))
 ;; (global-whitespace-mode t)
+
+;; automatically save last edit place
+(setq save-place-file "~/.emacs.d/saveplace")
+(setq-default save-place t)
+(require 'saveplace)
 
 ;; =============== end interface ==================
 
