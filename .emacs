@@ -52,6 +52,7 @@
  'smex
  'flyspell
  'reftex
+ 'cedet
  'scala-mode2
  'sbt-mode
  'ensime) ; --> (nil ...) if packages are not already installed
@@ -251,37 +252,42 @@
 (defun linux-c-mode()
   (interactive)
   ;; Set the alias style of C
-  (c-set-style "K&R")
+  ;; (c-set-style "K&R")
+  (c-set-style "linux")
   ;; Auto align after typed {
   (c-toggle-auto-state)
   ;; Hungry delete spaces when pressing Backspace
   (c-toggle-hungry-state)
   ;; Set width of TAB to 4
   (setq c-basic-offset 4)
+  ;; indent case labels by c-indent-level, too
+  (c-set-offset 'case-label '+)
   ;; Display the function name
   (which-function-mode)
   ;; Key define - compile
   (define-key c-mode-base-map [(f7)] 'compile)
   ;; Enter act same as C-j
-  ;; (define-key c-mode-map [return] 'newline-and-indent)
+  (define-key c-mode-map [return] 'newline-and-indent)
   (local-set-key (kbd "RET") 'newline-and-indent)
   ;; Code auto completion
-  (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
-  (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+  ;; (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
+  ;; (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
 )
 
 (add-hook 'c++-mode-hook 'linux-c++-mode)
 
 (defun linux-c++-mode()
   (interactive)
-  (c-set-style "K&R")
+  ;; (c-set-style "K&R")
+  (c-set-style "linux")
   (c-toggle-auto-state)
   (c-toggle-hungry-state)
   (setq c-basic-offset 4)
   (imenu-add-menubar-index)
   (which-function-mode)
+  (c-set-offset 'case-label '+)
   (define-key c-mode-base-map [(f7)] 'compile)
-  ;; (define-key c++-mode-map [return] 'newline-and-indent)
+  (define-key c++-mode-map [return] 'newline-and-indent)
   (local-set-key (kbd "RET") 'newline-and-indent)
   (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
@@ -316,6 +322,17 @@
 
 ;; define the make command
 '(compile-command "make")
+
+;; CEDET
+(require 'cedet)
+(global-ede-mode 1)                      ; Enable the Project management system
+;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
+;; (global-srecode-minor-mode 1)            ; Enable template insertion menu
+(semantic-mode 1)
+(require 'semantic/ia)
+(require 'semantic/bovine/gcc)
+(setq-mode-local c-mode semanticdb-find-default-throttle
+                 '(project unloaded system recursive))
 
 ;; ================== end c/c++ ================
 
