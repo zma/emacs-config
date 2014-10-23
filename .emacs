@@ -55,6 +55,7 @@
  'cedet
  'scala-mode2
  'sbt-mode
+ 'haskell-mode
  'ensime) ; --> (nil ...) if packages are not already installed
 
 ;; ================= common config =============
@@ -267,8 +268,8 @@
   ;; Key define - compile
   (define-key c-mode-base-map [(f7)] 'compile)
   ;; Enter act same as C-j
-  (define-key c-mode-map [return] 'newline-and-indent)
-  (local-set-key (kbd "RET") 'newline-and-indent)
+  (define-key c-mode-map [return] 'reindent-then-newline-and-indent)
+  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   ;; Code auto completion
   ;; (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   ;; (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
@@ -287,8 +288,8 @@
   (which-function-mode)
   (c-set-offset 'case-label '+)
   (define-key c-mode-base-map [(f7)] 'compile)
-  (define-key c++-mode-map [return] 'newline-and-indent)
-  (local-set-key (kbd "RET") 'newline-and-indent)
+  (define-key c++-mode-map [return] 'reindent-then-newline-and-indent)
+  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
 )
@@ -361,7 +362,7 @@
 
 ;; auto indent: http://www.emacswiki.org/emacs/AutoIndentation
 (add-hook 'scala-mode-hook '(lambda ()
-                              (local-set-key (kbd "RET") 'newline-and-indent)))
+                              (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
 
 ;; set evil-mode M-. to be handled by ensime
 (add-hook 'ensime-mode-hook '(lambda ()
