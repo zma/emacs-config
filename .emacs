@@ -223,6 +223,10 @@
 (setq evil-want-C-u-scroll t)
 (require 'evil)
 (evil-mode 1)
+(eval-after-load "evil"
+  '(progn
+     (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)))
 
 ;; auto-completion when typing commands
 (require 'smex)
