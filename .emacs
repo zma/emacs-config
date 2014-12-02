@@ -54,10 +54,11 @@
  'reftex
  'cedet
  'scala-mode2
+ 'ensime
  'go-mode
  'sbt-mode
  'haskell-mode
- 'ensime) ; --> (nil ...) if packages are not already installed
+ 'git-commit-mode) ; --> (nil ...) if packages are not already installed
 
 ;; ================= common config =============
 ;; Set default major mode to text-mode
