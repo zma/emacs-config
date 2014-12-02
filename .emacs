@@ -54,6 +54,7 @@
  'reftex
  'cedet
  'scala-mode2
+ 'go-mode
  'sbt-mode
  'haskell-mode
  'ensime) ; --> (nil ...) if packages are not already installed
