@@ -53,6 +53,7 @@
  'flyspell
  'reftex
  'cedet
+ 'tuareg
  'scala-mode2
  'ensime
  'go-mode
@@ -344,7 +345,7 @@
 
 ;; ================== end c/c++ ================
 
-;; ================== ocaml ===================
+;; ================== OCaml ===================
 ;; tuareg-mode set
 (setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
