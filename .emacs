@@ -85,14 +85,14 @@
 
 ;; Set backup functions
 (setq
-  backup-by-copying t ; auto backup
-  backup-directory-alist '(("."."~/.emacs.d/backup")) ; backup files
-  auto-save-file-name-transforms `((".*" ,"~/.emacs.d/backup" t)) ; #files
-  version-control t ; backup version control
-  delete-old-versions t ; automatically delete old backup files
-  kept-new-versions 8 ; keep 8 version of backup
-  kept-old-versions 4 ; keep the 4 oldest version of backup
-)
+ backup-by-copying t ; auto backup
+ backup-directory-alist '(("."."~/.emacs.d/backup")) ; backup files
+ auto-save-file-name-transforms `((".*" ,"~/.emacs.d/backup" t)) ; #files
+ version-control t ; backup version control
+ delete-old-versions t ; automatically delete old backup files
+ kept-new-versions 8 ; keep 8 version of backup
+ kept-old-versions 4 ; keep the 4 oldest version of backup
+ )
 
 ;; Auto Complete Mode: http://www.fclose.com/4249/emacs-tips-and-howtos/#auto-completion
 (require 'auto-complete-config)
@@ -230,6 +230,8 @@
 (evil-mode 1)
 (eval-after-load "evil"
   '(progn
+     (define-key evil-normal-state-map (kbd "W") 'save-buffer)
+     (define-key evil-normal-state-map (kbd "Q") 'evil-save-and-close)
      (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
      (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)))
 
@@ -282,7 +284,7 @@
   ;; Code auto completion
   ;; (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   ;; (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
-)
+  )
 
 (add-hook 'c++-mode-hook 'linux-c++-mode)
 
@@ -301,13 +303,13 @@
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
-)
+  )
 
 ;; complete inside a word, otherwise indent
 (defun my-indent-or-complete ()
   (interactive)
   (if (looking-at "\\>")
-    (hippie-expand nil)
+      (hippie-expand nil)
     (indent-for-tab-command)))
 
 (autoload 'senator-try-expand-semantic "senator")
@@ -328,7 +330,7 @@
         try-complete-file-name
         try-expand-whole-kill
         )
-)
+      )
 
 ;; define the make command
 '(compile-command "make")
@@ -351,7 +353,7 @@
 (setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-;; ================== end ocaml ===============
+;; ================== end OCaml ===============
 
 ;; ================== scala ===============
 ;; scala mode
