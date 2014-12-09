@@ -59,8 +59,8 @@
  'go-mode
  'sbt-mode
  'haskell-mode
- 'php-mode
- 'mmm-mode
+;; 'php-mode
+;; 'mmm-mode
  'git-commit-mode) ; --> (nil ...) if packages are not already installed
 
 ;; ================= common config =============
