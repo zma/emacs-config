@@ -6,12 +6,12 @@
 ;; and
 ;; http://ask.fclose.com/tag/emacs
 
-;; load path
-(add-to-list 'load-path "~/.emacs.lisp/")
-
-;; recursively load subdirs in ~/.emacs.lisp/
-(let ((default-directory "~/.emacs.lisp/"))
-  (normal-top-level-add-subdirs-to-load-path))
+;; ;; load path
+;; (add-to-list 'load-path "~/.emacs.lisp/")
+;;
+;; ;; recursively load subdirs in ~/.emacs.lisp/
+;; (let ((default-directory "~/.emacs.lisp/"))
+;;   (normal-top-level-add-subdirs-to-load-path))
 
 ;; package repos
 (require 'package)
@@ -180,9 +180,9 @@
 (setq-default show-trailing-whitespace t)
 
 ;; `lines-tail`, highlight the part that goes beyond the limit of `whitespace-line-column`
-;; (require 'whitespace)
-;; (setq whitespace-style '(face empty tabs lines-tail trailing))
-;; (global-whitespace-mode t)
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
 
 ;; automatically save last edit place
 (setq save-place-file "~/.emacs.d/saveplace")
