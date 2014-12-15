@@ -246,7 +246,16 @@
 ;; =============== end keys ==================
 
 ;; =================== tags =====================
-(defvar tags-cmd "ctags -e -R ./* 2>/dev/null")
+;; TODO: merge these 2 into 1 function; avoid duplicated code
+(defvar tags-cmd-rec "ctags -e -R ./* 2>/dev/null")
+(defvar tags-cmd "ctags -e ./* 2>/dev/null")
+
+(defun tags-regen-rec ()
+  "Regenerate the tags file recursively for the current working directory"
+  (interactive)
+  (let ((tag-file (concat default-directory "TAGS")))
+    (shell-command tags-cmd-rec)
+    (visit-tags-table tag-file)))
 
 (defun tags-regen ()
   "Regenerate the tags file for the current working directory"
@@ -254,6 +263,7 @@
   (let ((tag-file (concat default-directory "TAGS")))
     (shell-command tags-cmd)
     (visit-tags-table tag-file)))
+
 ;; =================== end etags =====================
 
 ;; ================== c/c++ ====================
