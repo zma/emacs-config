@@ -182,6 +182,8 @@
 ;; `lines-tail`, highlight the part that goes beyond the limit of `whitespace-line-column`
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
+;; very large by default; each mode set its own value
+(setq whitespace-line-column 1000000)
 (global-whitespace-mode t)
 
 ;; automatically save last edit place
@@ -294,6 +296,8 @@
   ;; Code auto completion
   ;; (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   ;; (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+  (set (make-local-variable 'whitespace-line-column) 78)
+  (setq whitespace-line-column 78)
   )
 
 (add-hook 'c++-mode-hook 'linux-c++-mode)
@@ -313,6 +317,7 @@
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+  (setq-default whitespace-line-column 78)
   )
 
 ;; complete inside a word, otherwise indent
