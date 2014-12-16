@@ -317,7 +317,8 @@
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
   (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
-  (setq-default whitespace-line-column 78)
+  (set (make-local-variable 'whitespace-line-column) 78)
+  (setq whitespace-line-column 78)
   )
 
 ;; complete inside a word, otherwise indent
