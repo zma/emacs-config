@@ -235,7 +235,11 @@
      (define-key evil-normal-state-map (kbd "W") 'save-buffer)
      (define-key evil-normal-state-map (kbd "Q") 'evil-save-and-close)
      (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)))
+     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+     (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+     (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+     )
+  )
 
 ;; auto-completion when typing commands
 (require 'smex)
