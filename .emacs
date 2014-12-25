@@ -383,9 +383,9 @@
 (require 'merlin)
 ;; Start merlin on ocaml files
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
-;; (add-hook 'caml-mode-hook 'merlin-mode t)
+(add-hook 'caml-mode-hook 'merlin-mode t)
 ;; Enable auto-complete
-(setq merlin-use-auto-complete-mode 'easy)
+(setq merlin-use-auto-complete-mode t)
 ;; Use opam switch to lookup ocamlmerlin binary
 (setq merlin-command 'opam)
 
