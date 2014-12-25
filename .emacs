@@ -375,6 +375,7 @@
 (add-hook 'tuareg-mode-hook '(lambda ()
                               (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
 
+;; auto completion
 ;; Add opam emacs directory to the load-path
 (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
@@ -384,10 +385,30 @@
 ;; Start merlin on ocaml files
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
 (add-hook 'caml-mode-hook 'merlin-mode t)
-;; Enable auto-complete
+;; Enable auto-complete during typing
 (setq merlin-use-auto-complete-mode t)
 ;; Use opam switch to lookup ocamlmerlin binary
 (setq merlin-command 'opam)
+
+;; Disable completion on OCaml keywords:
+(add-hook 'tuareg-mode-hook
+          (lambda ()
+            (make-local-variable 'ac-ignores)
+            (setq ac-ignores
+                  (append '("and" "as" "assert" "begin" "class"
+                            "constraint" "do" "done" "downto"
+                            "else" "end" "exception" "external"
+                            "false" "for" "fun" "function"
+                            "functor" "if" "in" "include"
+                            "inherit" "initializer" "lazy" "let"
+                            "match" "method" "module" "mutable"
+                            "new" "object" "of" "open" "or"
+                            "private" "rec" "sig" "struct"
+                            "then" "to" "true" "try" "type"
+                            "val" "virtual" "when" "while"
+                            "with" "mod" "land" "lor" "lxor"
+                            "lsl" "lsr" "asr")
+                          ac-ignores))))
 
 ;; tuareg-mode set
 (setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
