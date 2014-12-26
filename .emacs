@@ -456,6 +456,7 @@
 (add-hook 'sh-mode-hook '(lambda ()
                            (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
 ;; ================== End shell ===============
+
 ;; ================== latex ===================
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
@@ -465,3 +466,7 @@
 (add-hook 'LaTex-mode-hook (lambda () (flyspell-mode 1)))
 (add-hook 'latex-mode-hook (lambda () (flyspell-mode 1)))
 ;; ================== end latex ===================
+
+;; ================== mail ===================
+(add-to-list 'auto-mode-alist '("\\.eml\\'" . mail-mode))
+;; ================== end mail ===================
