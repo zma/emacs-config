@@ -54,7 +54,7 @@
  'reftex
  'cedet
  'tuareg
- 'iedit
+;; 'iedit
 ;; 'merlin
  'scala-mode2
  'ensime
@@ -300,8 +300,8 @@
   (define-key c-mode-map [return] 'reindent-then-newline-and-indent)
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   ;; Code auto completion
-  ;; (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
-  ;; (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+  (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
+  (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
   (set (make-local-variable 'whitespace-line-column) 78)
   (setq whitespace-line-column 78)
   )
