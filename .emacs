@@ -468,5 +468,14 @@
 ;; ================== end latex ===================
 
 ;; ================== mail ===================
+;; .eml files -> mail-mode
 (add-to-list 'auto-mode-alist '("\\.eml\\'" . mail-mode))
+;; different colors for double- and multiple-quoted text
+(add-hook 'mail-mode-hook
+          (lambda ()
+            (font-lock-add-keywords nil
+                                    '(("^[ \t]*>[ \t]*>[ \t]*>.*$"
+                                       (0 'mail-multiply-quoted-text-face))
+                                      ("^[ \t]*>[ \t]*>.*$"
+                                       (0 'mail-double-quoted-text-face))))))
 ;; ================== end mail ===================
