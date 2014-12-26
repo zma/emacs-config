@@ -54,8 +54,7 @@
  'reftex
  'cedet
  'tuareg
-;; 'iedit
-;; 'merlin
+ 'iedit
  'scala-mode2
  'ensime
  'go-mode
@@ -228,6 +227,9 @@
 (global-set-key (kbd "<C-up>") 'shrink-window)
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 
+;; iedit mode
+(require 'iedit)
+
 ;; evil mode
 (setq evil-want-C-u-scroll t)
 (require 'evil)
@@ -240,6 +242,8 @@
      (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
      (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
      (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+     ;; iedit mode
+     (define-key evil-normal-state-map (kbd "C-i") 'iedit-mode)
      )
   )
 
