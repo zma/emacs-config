@@ -450,6 +450,12 @@
   (add-hook hook (lambda () (flyspell-mode -1))))
 ;; ================== end text ===================
 
+;; ================== shell ===================
+
+;; auto indent
+(add-hook 'sh-mode-hook '(lambda ()
+                           (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
+;; ================== End shell ===============
 ;; ================== latex ===================
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
