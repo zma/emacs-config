@@ -54,6 +54,8 @@
  'reftex
  'cedet
  'tuareg
+ 'merlin
+ 'utop
  'iedit
  'scala-mode2
  'ensime
@@ -375,24 +377,20 @@
 ;; ================== end c/c++ ================
 
 ;; ================== OCaml ===================
-;; auto indent
-(add-hook 'tuareg-mode-hook '(lambda ()
-                              (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
-
 ;; auto completion
 ;; Add opam emacs directory to the load-path
-(setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
-(add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+;; (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+;; (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 
 ;; Load merlin-mode
 (require 'merlin)
 ;; Start merlin on ocaml files
 (add-hook 'tuareg-mode-hook 'merlin-mode t)
-(add-hook 'caml-mode-hook 'merlin-mode t)
+;; (add-hook 'caml-mode-hook 'merlin-mode t)
 ;; Enable auto-complete during typing
 (setq merlin-use-auto-complete-mode t)
 ;; Use opam switch to lookup ocamlmerlin binary
-(setq merlin-command 'opam)
+;; (setq merlin-command 'opam)
 
 ;; Disable completion on OCaml keywords:
 (add-hook 'tuareg-mode-hook
@@ -414,7 +412,14 @@
                             "lsl" "lsr" "asr")
                           ac-ignores))))
 
+;; utop
+(add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
+
+;; auto indent
 ;; tuareg-mode set
+(add-hook 'tuareg-mode-hook '(lambda ()
+                              (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
+
 (setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
