@@ -419,7 +419,7 @@
 ;; auto indent
 ;; tuareg-mode set
 (add-hook 'tuareg-mode-hook '(lambda ()
-                              (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
+                               (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
 
 (setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
