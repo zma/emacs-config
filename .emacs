@@ -61,7 +61,7 @@
  'ensime
  'go-mode
  'sbt-mode
- 'haskell-mode
+ ;; 'haskell-mode
  'php-mode
  'mmm-mode
  'git-commit-mode) ; --> (nil ...) if packages are not already installed
@@ -489,3 +489,13 @@
                                       ("^[ \t]*>[ \t]*>.*$"
                                        (0 'mail-double-quoted-text-face))))))
 ;; ================== end mail ===================
+
+;; ================== php ===================
+(require 'php-mode)
+;; To use abbrev-mode, add lines like this:
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (define-abbrev php-mode-abbrev-table "ex" "extends")
+             ))
+(add-hook 'php-mode-hook 'php-enable-default-coding-style)
+;; ================== end php ===================
