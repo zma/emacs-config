@@ -170,6 +170,8 @@
 ;; disable it by default; otherwise, it will make emacs slow
 ;; use customized linum-format: add a addition space after the line number
 ;; (setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+;; this mehtod is faster
+(setq linum-format "%d ")
 
 ;; Display the paren
 ;; see matching pairs of parentheses and other characters
