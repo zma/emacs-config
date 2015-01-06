@@ -115,9 +115,8 @@
 ;; =============== interface ==================
 
 ;; use the new deftheme support from Emacs 24
-;; (if (>= emacs-major-version 24)
-;;     ;; (load-theme 'misterioso t))
-;;     (load-theme 'wombat t))
+(if (>= emacs-major-version 24)
+    (load-theme 'tsdh-dark t))
 
 ;; No start up message
 (setq inhibit-startup-message t)
