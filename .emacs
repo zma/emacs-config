@@ -167,8 +167,9 @@
 ;; http://www.logic.at/prolog/linum/linum.html
 (require 'linum)
 (global-linum-mode t)
+;; disable it by default; otherwise, it will make emacs slow
 ;; use customized linum-format: add a addition space after the line number
-(setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+;; (setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
 
 ;; Display the paren
 ;; see matching pairs of parentheses and other characters
