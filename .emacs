@@ -115,8 +115,8 @@
 ;; =============== interface ==================
 
 ;; use the new deftheme support from Emacs 24
-;; (if (>= emacs-major-version 24)
-;;    (load-theme 'tsdh-dark t))
+(if (>= emacs-major-version 24)
+   (load-theme 'tsdh-dark t))
 
 ;; No start up message
 (setq inhibit-startup-message t)
@@ -238,7 +238,6 @@
 ;; evil mode
 (setq evil-want-C-u-scroll t)
 (require 'evil)
-(evil-mode 1)
 (eval-after-load "evil"
   '(progn
      (define-key evil-normal-state-map (kbd "W") 'save-buffer)
@@ -251,6 +250,7 @@
      (define-key evil-normal-state-map (kbd "C-i") 'iedit-mode)
      )
   )
+(evil-mode 1)
 
 ;; auto-completion when typing commands
 (require 'smex)
