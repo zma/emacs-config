@@ -64,7 +64,7 @@
  ;; 'haskell-mode
  'php-mode
  'web-mode
- 'mmm-mode
+ ;; 'mmm-mode
  'git-commit-mode) ; --> (nil ...) if packages are not already installed
 
 ;; ================= common config =============
