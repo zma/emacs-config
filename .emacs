@@ -286,6 +286,7 @@
 
 ;; ================== c/c++ ====================
 (add-to-list 'auto-mode-alist '("\\.c0\\'" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.puc\\'" . c-mode))
 
 (add-hook 'c-mode-hook 'linux-c-mode)
 
