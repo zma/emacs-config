@@ -62,7 +62,7 @@
  'go-mode
  'sbt-mode
  ;; 'haskell-mode
- 'php-mode
+ ;; 'php-mode
  'web-mode
  ;; 'mmm-mode
  'git-commit-mode) ; --> (nil ...) if packages are not already installed
