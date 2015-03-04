@@ -424,7 +424,8 @@
 (add-hook 'tuareg-mode-hook '(lambda ()
                                (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
 
-(setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.mlw?\\'" . tuareg-mode))
+;; (setq auto-mode-alist (cons '(".mlw?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
 
@@ -493,15 +494,32 @@
                                        (0 'mail-double-quoted-text-face))))))
 ;; ================== end mail ===================
 
-;; ================== php ===================
-(require 'php-mode)
-;; To use abbrev-mode, add lines like this:
-(add-hook 'php-mode-hook
-          '(lambda ()
-             (define-abbrev php-mode-abbrev-table "ex" "extends")
-             ))
-(add-hook 'php-mode-hook 'php-enable-default-coding-style)
-;; ================== end php ===================
+;; ================== web ===================
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(setq web-mode-engines-alist
+      '(("php"    . "\\.phtml\\'")
+        ("blade"  . "\\.blade\\."))
+      )
+
+(add-hook 'local-write-file-hooks
+          (lambda ()
+            (delete-trailing-whitespace)
+            nil))
+
+;; ================== end web ===============
+
+;; ;; ================== php ===================
+;; (require 'php-mode)
+;; ;; To use abbrev-mode, add lines like this:
+;; (add-hook 'php-mode-hook
+;;           '(lambda ()
+;;              (define-abbrev php-mode-abbrev-table "ex" "extends")
+;;              ))
+;; (add-hook 'php-mode-hook 'php-enable-default-coding-style)
+;; ;; ================== end php ===================
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
