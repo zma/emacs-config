@@ -47,7 +47,7 @@
  'undo-tree
  'linum
  'saveplace
- 'fill-column-indicator
+ ;; 'fill-column-indicator
  'auto-complete
  'smex
  'flyspell
@@ -56,7 +56,7 @@
  'tuareg
  'merlin
  'utop
- 'iedit
+ ;; 'iedit
  'scala-mode2
  'ensime
  'go-mode
@@ -234,7 +234,7 @@
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 
 ;; iedit mode
-(require 'iedit)
+;; (require 'iedit)
 
 ;; evil mode
 (setq evil-want-C-u-scroll t)
@@ -248,7 +248,7 @@
      (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
      (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
      ;; iedit mode
-     (define-key evil-normal-state-map (kbd "C-i") 'iedit-mode)
+     ;; (define-key evil-normal-state-map (kbd "C-i") 'iedit-mode)
      )
   )
 (evil-mode 1)
